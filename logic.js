@@ -1,46 +1,53 @@
 const diceThrows = [];
-const diceIHave = [0, 0, 0, 0, 0, 0];
+const diceIHave = [];
 
-var timesThrownPerTurn = 0;
+let timesThrownPerTurn = 0;
 
-var sameThrows = 0;
-var sameThrows2 = 0;
-var sequenceThrows = 0;
+let sameThrows = 0;
+let sameThrows2 = 0;
+let sequenceThrows = 0;
 
-var acesThrown = 0;
-var twosThrown = 0;
-var threesThrown = 0;
-var foursThrown = 0;
-var fivesThrown = 0;
-var sixesThrown = 0;
+let acesThrown = 0;
+let twosThrown = 0;
+let threesThrown = 0;
+let foursThrown = 0;
+let fivesThrown = 0;
+let sixesThrown = 0;
 
-var acesScore = 0;
-var twosScore = 0;
-var threesScore = 0;
-var foursScore = 0;
-var fivesScore = 0;
-var sixesScore = 0;
-var upperTotal = 0;
-var bonusScore = 0;
+let acesScore = 0;
+let twosScore = 0;
+let threesScore = 0;
+let foursScore = 0;
+let fivesScore = 0;
+let sixesScore = 0;
+let upperTotal = 0;
+let bonusScore = 0;
 
-var threeOfAKindScore = 0;
-var fourOfAKindScore = 0;
-var fullHouseScore = 0;
-var smallStraightScore = 0;
-var largeStraightScore = 0;
-var yahtzeeScore = 0;
-var chanceScore = 0;
-var bottomTotal = 0;
+let threeOfAKindScore = 0;
+let fourOfAKindScore = 0;
+let fullHouseScore = 0;
+let smallStraightScore = 0;
+let largeStraightScore = 0;
+let yahtzeeScore = 0;
+let chanceScore = 0;
+let bottomTotal = 0;
 
-var totalOverall = 0;
+let totalOverall = 0;
 
-var yahtzeeThrown = false;
-var twoOfAKindThrown = false;
-var threeOfAKindThrown = false;
-var fourOfAKindThrown = false;
-var fullHouseThrown = false;
-var smallStraightThrown = false;
-var largeStraightThrown = false;
+let acesCounted = false;
+let twosCounted = false;
+let threesCounted = false;
+let foursCounted = false;
+let fivesCounted = false;
+let sixesCounted = false;
+
+let yahtzeeThrown = false;
+let twoOfAKindThrown = false;
+let threeOfAKindThrown = false;
+let fourOfAKindThrown = false;
+let fullHouseThrown = false;
+let smallStraightThrown = false;
+let largeStraightThrown = false;
 
 function throwDice() {
   for (let i = 0; i < 5; i++) {
@@ -50,6 +57,7 @@ function throwDice() {
 }
 
 function isItAYahtzee() {
+  yahtzeeThrown = false;
   for (let j = 1; j <= 6; j++) {
     sameThrows = 0;
     for (let i = 0; i < 5; i++) {
@@ -57,10 +65,12 @@ function isItAYahtzee() {
         sameThrows++;
       }
     }
-    if (sameThrows == 5) {
+    if (sameThrows == 5 && !yahtzeeThrown) {
       yahtzeeThrown = true;
+      yahtzeeScore += 50;
     }
   }
+  document.getElementById("yahtzee").innerHTML = JSON.stringify(yahtzeeScore);
 }
 
 function isItAFOK() {
@@ -71,10 +81,14 @@ function isItAFOK() {
         sameThrows++;
       }
     }
-    if (sameThrows >= 4) {
-      fourOfAKindThrown = true;
+    if (sameThrows >= 4 && !fourOfAKindThrown) {
+      for (let i = 0; i < 5; i++) {
+        fourOfAKindScore += diceThrows[i];
+      }
     }
   }
+  fourOfAKindThrown = true;
+  document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
 }
 
 function isItATOK() {
@@ -85,13 +99,19 @@ function isItATOK() {
         sameThrows++;
       }
     }
-    if (sameThrows >= 3) {
+    if (sameThrows >= 3 && !threeOfAKindThrown) {
       threeOfAKindThrown = true;
+      for (let i = 0; i < 5; i++) {
+        threeOfAKindScore += diceThrows[i];
+      }
     }
   }
+  document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
 }
 
 function isItAFH() {
+  threeOfAKindThrown = false;
+  twoOfAKindThrown = false;
   for (let j = 1; j <= 6; j++) {
     sameThrows = 0;
     for (let i = 0; i < 5; i++) {
@@ -115,9 +135,11 @@ function isItAFH() {
     }
   }
 
-  if (threeOfAKindThrown && twoOfAKindThrown) {
+  if (threeOfAKindThrown && twoOfAKindThrown && !fullHouseThrown) {
     fullHouseThrown = true;
+    fullHouseScore += 25;
   }
+  document.getElementById("FH").innerHTML = JSON.stringify(fullHouseScore);
 }
 
 function isItASmallStraight() {
@@ -137,10 +159,13 @@ function isItASmallStraight() {
       sequenceThrows = 0;
     }
 
-    if (sequenceThrows >= 4) {
+    if (sequenceThrows >= 4 && !smallStraightThrown) {
       smallStraightThrown = true;
+      smallStraightScore += 30;
     }
   }
+  document.getElementById("smStraight").innerHTML =
+    JSON.stringify(smallStraightScore);
 }
 
 function isItALargeStraight() {
@@ -160,10 +185,13 @@ function isItALargeStraight() {
       sequenceThrows = 0;
     }
 
-    if (sequenceThrows == 5) {
-      largeStraightThrown = true;
+    if (sequenceThrows == 5 && !largeStraightThrown) {
+      largeStraightScore += 40;
     }
   }
+  largeStraightThrown = true;
+  document.getElementById("lrgStraight").innerHTML =
+    JSON.stringify(largeStraightScore);
 }
 
 function aces() {
@@ -172,11 +200,13 @@ function aces() {
       acesThrown++;
     }
   }
-  acesScore = acesThrown * 1;
+  if (!acesCounted) {
+    acesScore = acesThrown * 1;
+    upperTotal += acesScore;
+  }
   document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
-  upperTotal += acesScore;
+  acesCounted = true;
   bonus();
-  acesScore = 0;
 }
 
 function twos() {
@@ -185,9 +215,12 @@ function twos() {
       twosThrown++;
     }
   }
-  twosScore = twosThrown * 2;
+  if (!twosCounted) {
+    twosScore = twosThrown * 2;
+    upperTotal += twosScore;
+  }
   document.getElementById("twos").innerHTML = JSON.stringify(twosScore);
-  upperTotal += twosScore;
+  twosCounted = true;
   bonus();
 }
 
@@ -197,9 +230,12 @@ function threes() {
       threesThrown++;
     }
   }
-  threesScore = threesThrown * 3;
+  if (!threesCounted) {
+    threesScore = threesThrown * 3;
+    upperTotal += threesScore;
+  }
   document.getElementById("threes").innerHTML = JSON.stringify(threesScore);
-  upperTotal += threesScore;
+  threesCounted = true;
   bonus();
 }
 
@@ -209,9 +245,12 @@ function fours() {
       foursThrown++;
     }
   }
-  foursScore = foursThrown * 4;
+  if (!foursCounted) {
+    foursScore = foursThrown * 4;
+    upperTotal += foursScore;
+  }
   document.getElementById("fours").innerHTML = JSON.stringify(foursScore);
-  upperTotal += foursScore;
+  foursCounted = true;
   bonus();
 }
 
@@ -221,9 +260,12 @@ function fives() {
       fivesThrown++;
     }
   }
-  fivesScore = fivesThrown * 5;
+  if (!fivesCounted) {
+    fivesScore = fivesThrown * 5;
+    upperTotal += fivesScore;
+  }
   document.getElementById("fives").innerHTML = JSON.stringify(fivesScore);
-  upperTotal += fivesScore;
+  fivesCounted = true;
   bonus();
 }
 
@@ -233,16 +275,18 @@ function sixes() {
       sixesThrown++;
     }
   }
-  sixesScore = sixesThrown * 6;
+  if (!sixesCounted) {
+    sixesScore = sixesThrown * 6;
+    upperTotal += sixesScore;
+  }
   document.getElementById("sixes").innerHTML = JSON.stringify(sixesScore);
-  upperTotal += sixesScore;
+  sixesCounted = true;
   bonus();
 }
 
 function bonus() {
   if (upperTotal >= 63) {
     bonusScore = 35;
-    upperTotal += bonusScore;
   }
   document.getElementById("bonus").innerHTML = JSON.stringify(bonusScore);
 }
@@ -262,4 +306,3 @@ console.log(foursScore);
 console.log(fivesScore);
 console.log(sixesScore); 
 */
-console.log(upperTotal);

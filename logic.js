@@ -20,7 +20,7 @@ let threesScore = 0;
 let foursScore = 0;
 let fivesScore = 0;
 let sixesScore = 0;
-let upperTotal = 0;
+let upperTotalScore = 0;
 let bonusScore = 0;
 
 let threeOfAKindScore = 0;
@@ -30,7 +30,7 @@ let smallStraightScore = 0;
 let largeStraightScore = 0;
 let yahtzeeScore = 0;
 let chanceScore = 0;
-let bottomTotal = 0;
+let lowerTotalScore = 0;
 
 let totalOverall = 0;
 
@@ -48,11 +48,17 @@ let fourOfAKindThrown = false;
 let fullHouseThrown = false;
 let smallStraightThrown = false;
 let largeStraightThrown = false;
+let chanceThrown = false;
 
 function throwDice() {
-  for (let i = 0; i < 5; i++) {
-    diceThrows[i] = Math.floor(Math.random() * 6) + 1;
+  if (timesThrownPerTurn < 3) {
+    for (let i = 0; i < 5; i++) {
+      diceThrows[i] = Math.floor(Math.random() * 6) + 1;
+    }
+    timesThrownPerTurn++;
   }
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
   document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
 }
 
@@ -68,9 +74,15 @@ function isItAYahtzee() {
     if (sameThrows == 5 && !yahtzeeThrown) {
       yahtzeeThrown = true;
       yahtzeeScore += 50;
+      timesThrownPerTurn = 0;
+      lowerTotalScore += yahtzeeScore;
+      totalOverall += yahtzeeScore;
     }
   }
+  lowerTotal();
   document.getElementById("yahtzee").innerHTML = JSON.stringify(yahtzeeScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function isItAFOK() {
@@ -82,13 +94,19 @@ function isItAFOK() {
       }
     }
     if (sameThrows >= 4 && !fourOfAKindThrown) {
+      fourOfAKindThrown = true;
       for (let i = 0; i < 5; i++) {
         fourOfAKindScore += diceThrows[i];
       }
+      timesThrownPerTurn = 0;
+      lowerTotalScore += fourOfAKindScore;
+      totalOverall += fourOfAKindScore;
     }
   }
-  fourOfAKindThrown = true;
+  lowerTotal();
   document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function isItATOK() {
@@ -104,9 +122,15 @@ function isItATOK() {
       for (let i = 0; i < 5; i++) {
         threeOfAKindScore += diceThrows[i];
       }
+      timesThrownPerTurn = 0;
+      lowerTotalScore += threeOfAKindScore;
+      totalOverall += threeOfAKindScore;
     }
   }
+  lowerTotal();
   document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function isItAFH() {
@@ -138,8 +162,14 @@ function isItAFH() {
   if (threeOfAKindThrown && twoOfAKindThrown && !fullHouseThrown) {
     fullHouseThrown = true;
     fullHouseScore += 25;
+    timesThrownPerTurn = 0;
+    lowerTotalScore += fullHouseScore;
+    totalOverall += fullHouseScore;
   }
+  lowerTotal();
   document.getElementById("FH").innerHTML = JSON.stringify(fullHouseScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function isItASmallStraight() {
@@ -162,10 +192,16 @@ function isItASmallStraight() {
     if (sequenceThrows >= 4 && !smallStraightThrown) {
       smallStraightThrown = true;
       smallStraightScore += 30;
+      timesThrownPerTurn = 0;
+      lowerTotalScore += smallStraightScore;
+      totalOverall += smallStraightScore;
     }
   }
+  lowerTotal();
   document.getElementById("smStraight").innerHTML =
     JSON.stringify(smallStraightScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function isItALargeStraight() {
@@ -186,12 +222,18 @@ function isItALargeStraight() {
     }
 
     if (sequenceThrows == 5 && !largeStraightThrown) {
+      largeStraightThrown = true;
       largeStraightScore += 40;
+      timesThrownPerTurn = 0;
+      lowerTotalScore += largeStraightScore;
+      totalOverall += largeStraightScore;
     }
   }
-  largeStraightThrown = true;
+  lowerTotal();
   document.getElementById("lrgStraight").innerHTML =
     JSON.stringify(largeStraightScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function aces() {
@@ -202,11 +244,16 @@ function aces() {
   }
   if (!acesCounted) {
     acesScore = acesThrown * 1;
-    upperTotal += acesScore;
+    upperTotalScore += acesScore;
+    timesThrownPerTurn = 0;
+    totalOverall += acesScore;
   }
   document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
   acesCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function twos() {
@@ -217,11 +264,16 @@ function twos() {
   }
   if (!twosCounted) {
     twosScore = twosThrown * 2;
-    upperTotal += twosScore;
+    upperTotalScore += twosScore;
+    timesThrownPerTurn = 0;
+    totalOverall += twosScore;
   }
   document.getElementById("twos").innerHTML = JSON.stringify(twosScore);
   twosCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function threes() {
@@ -232,11 +284,16 @@ function threes() {
   }
   if (!threesCounted) {
     threesScore = threesThrown * 3;
-    upperTotal += threesScore;
+    upperTotalScore += threesScore;
+    timesThrownPerTurn = 0;
+    totalOverall += threesScore;
   }
   document.getElementById("threes").innerHTML = JSON.stringify(threesScore);
   threesCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function fours() {
@@ -247,11 +304,16 @@ function fours() {
   }
   if (!foursCounted) {
     foursScore = foursThrown * 4;
-    upperTotal += foursScore;
+    upperTotalScore += foursScore;
+    timesThrownPerTurn = 0;
+    totalOverall += foursScore;
   }
   document.getElementById("fours").innerHTML = JSON.stringify(foursScore);
   foursCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function fives() {
@@ -262,11 +324,16 @@ function fives() {
   }
   if (!fivesCounted) {
     fivesScore = fivesThrown * 5;
-    upperTotal += fivesScore;
+    upperTotalScore += fivesScore;
+    timesThrownPerTurn = 0;
+    totalOverall += fivesScore;
   }
   document.getElementById("fives").innerHTML = JSON.stringify(fivesScore);
   fivesCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function sixes() {
@@ -277,11 +344,16 @@ function sixes() {
   }
   if (!sixesCounted) {
     sixesScore = sixesThrown * 6;
-    upperTotal += sixesScore;
+    upperTotalScore += sixesScore;
+    timesThrownPerTurn = 0;
+    totalOverall += sixesScore;
   }
   document.getElementById("sixes").innerHTML = JSON.stringify(sixesScore);
   sixesCounted = true;
   bonus();
+  upperTotal();
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
 }
 
 function bonus() {
@@ -291,7 +363,40 @@ function bonus() {
   document.getElementById("bonus").innerHTML = JSON.stringify(bonusScore);
 }
 
-/*
+function chance() {
+  if (!chanceThrown) {
+    for (let i = 0; i < 5; i++) {
+      chanceScore += diceThrows[i];
+    }
+    chanceThrown = true;
+    timesThrownPerTurn = 0;
+    lowerTotalScore += chanceScore;
+    totalOverall += chanceScore;
+  }
+  lowerTotal();
+  document.getElementById("chance").innerHTML = JSON.stringify(chanceScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
+}
+
+function upperTotal() {
+  document.getElementById("upperTotal").innerHTML =
+    JSON.stringify(upperTotalScore);
+  totalTotal();
+}
+
+function lowerTotal() {
+  document.getElementById("lowerTotal").innerHTML =
+    JSON.stringify(lowerTotalScore);
+  totalTotal();
+}
+
+function totalTotal() {
+  document.getElementById("totalTotal").innerHTML =
+    JSON.stringify(totalOverall);
+}
+
+/*function reset() {}
 console.log(yahtzeeThrown);
 console.log(fourOfAKindThrown);
 console.log(threeOfAKindThrown);

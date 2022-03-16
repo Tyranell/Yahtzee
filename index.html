@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h2>Yahtzee?</h2>
+    <h2>Yahtzee!</h2>
 
+    <p>Times rolled this turn: <span id="timesRolled">0</span></p>
     <p>Your dice rolls are: <span id="diceRolls">[0,0,0,0,0]</span></p>
     <button type="button" onclick="throwDice()">Click Me</button>
     <p>Aces: <span id="aces">0</span></p>
@@ -18,6 +19,7 @@
     <p>Sixes: <span id="sixes">0</span></p>
     <button type="button" onclick="sixes()">Click Me</button>
     <p>Bonus: <span id="bonus">0</span></p>
+    <p>Upper total: <span id="upperTotal">0</span></p>
     <br />
     <p>Three of a kind: <span id="TOK">0</span></p>
     <button type="button" onclick="isItATOK()">Click Me</button>
@@ -31,6 +33,10 @@
     <button type="button" onclick="isItALargeStraight()">Click Me</button>
     <p>Yahtzee: <span id="yahtzee">0</span></p>
     <button type="button" onclick="isItAYahtzee()">Click Me</button>
+    <p>Chance: <span id="chance">0</span></p>
+    <button type="button" onclick="chance()">Click Me</button>
+    <p>Lower total: <span id="lowerTotal">0</span></p>
+    <p>Total of both: <span id="totalTotal">0</span></p>
 
     <script src="logic.js"></script>
   </body>

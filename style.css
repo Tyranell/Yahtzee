@@ -1,0 +1,204 @@
+.grid-container {
+  max-width: 900px;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]);
+  grid-template-rows: repeat(19, [row-start] 50px [row-end]);
+  grid-template-areas:
+    "grT1 spT1 ."
+    "grT2 spT2 but1"
+    "grT3 spT3 but2"
+    "grT4 spT4 but3"
+    "grT5 spT5 but4"
+    "grT6 spT6 but5"
+    "grT7 spT7 but6"
+    "grT8 spT8 but7"
+    "grT9 spT9 ."
+    "gT10 sT10 ."
+    "gT11 sT11 but8"
+    "gT12 sT12 but9"
+    "gT13 sT13 bt10"
+    "gT14 sT14 bt11"
+    "gT15 sT15 bt12"
+    "gT16 sT16 bt13"
+    "gT17 sT17 bt14"
+    "gT18 sT18 ."
+    "gT19 sT19 .";
+  /*grid-template-areas:
+    "grT1 spT1 . . . . ."
+    "grT2 spT2 but1 . gT11 sT11 but8"
+    "grT3 spT3 but2 . gT12 sT12 but9"
+    "grT4 spT4 but3 . gT13 sT13 bt10"
+    "grT5 spT5 but4 . gT14 sT14 bt11"
+    "grT6 spT6 but5 . gT15 sT15 bt12"
+    "grT7 spT7 but6 . gT16 sT16 bt13"
+    "grT8 spT8 but7 . gT17 sT17 bt14"
+    "grT9 spT9 . . gT18 sT18 ."
+    "gT10 sT10 . . gT19 sT19 .";*/
+  grid-auto-rows: 1fr;
+  grid-column-gap: 10px;
+}
+
+.grid-container > span {
+  text-align: center;
+  border: 3px solid black;
+}
+
+.gridText1 {
+  grid-area: grT1;
+}
+.gridText2 {
+  grid-area: grT2;
+}
+.gridText3 {
+  grid-area: grT3;
+}
+.gridText4 {
+  grid-area: grT4;
+}
+.gridText5 {
+  grid-area: grT5;
+}
+.gridText6 {
+  grid-area: grT6;
+}
+.gridText7 {
+  grid-area: grT7;
+}
+.gridText8 {
+  grid-area: grT8;
+}
+.gridText9 {
+  grid-area: grT9;
+}
+.gridText10 {
+  grid-area: gT10;
+}
+.gridText11 {
+  grid-area: gT11;
+}
+.gridText12 {
+  grid-area: gT12;
+}
+.gridText13 {
+  grid-area: gT13;
+}
+.gridText14 {
+  grid-area: gT14;
+}
+.gridText15 {
+  grid-area: gT15;
+}
+.gridText16 {
+  grid-area: gT16;
+}
+.gridText17 {
+  grid-area: gT17;
+}
+.gridText18 {
+  grid-area: gT18;
+}
+.gridText19 {
+  grid-area: gT19;
+}
+
+.spanText1 {
+  grid-area: spT1;
+}
+.spanText2 {
+  grid-area: spT2;
+}
+.spanText3 {
+  grid-area: spT3;
+}
+.spanText4 {
+  grid-area: spT4;
+}
+.spanText5 {
+  grid-area: spT5;
+}
+.spanText6 {
+  grid-area: spT6;
+}
+.spanText7 {
+  grid-area: spT7;
+}
+.spanText8 {
+  grid-area: spT8;
+}
+.spanText9 {
+  grid-area: spT9;
+}
+.spanText10 {
+  grid-area: sT10;
+}
+.spanText11 {
+  grid-area: sT11;
+}
+.spanText12 {
+  grid-area: sT12;
+}
+.spanText13 {
+  grid-area: sT13;
+}
+.spanText14 {
+  grid-area: sT14;
+}
+.spanText15 {
+  grid-area: sT15;
+}
+.spanText16 {
+  grid-area: sT16;
+}
+.spanText17 {
+  grid-area: sT17;
+}
+.spanText18 {
+  grid-area: sT18;
+}
+.spanText19 {
+  grid-area: sT19;
+}
+
+.button1 {
+  grid-area: but1;
+}
+.button2 {
+  grid-area: but2;
+}
+.button3 {
+  grid-area: but3;
+}
+.button4 {
+  grid-area: but4;
+}
+.button5 {
+  grid-area: but5;
+}
+.button6 {
+  grid-area: but6;
+}
+.button7 {
+  grid-area: but7;
+}
+.button8 {
+  grid-area: but8;
+}
+.button9 {
+  grid-area: but9;
+}
+.button10 {
+  grid-area: bt10;
+}
+.button11 {
+  grid-area: bt11;
+}
+.button12 {
+  grid-area: bt12;
+}
+.button13 {
+  grid-area: bt13;
+}
+.button14 {
+  grid-area: bt14;
+}

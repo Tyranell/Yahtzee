@@ -72,17 +72,18 @@ function isItAYahtzee() {
       }
     }
     if (sameThrows == 5 && !yahtzeeThrown) {
-      yahtzeeThrown = true;
       yahtzeeScore += 50;
-      timesThrownPerTurn = 0;
       lowerTotalScore += yahtzeeScore;
       totalOverall += yahtzeeScore;
     }
   }
+  yahtzeeThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("yahtzee").innerHTML = JSON.stringify(yahtzeeScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function isItAFOK() {
@@ -94,19 +95,21 @@ function isItAFOK() {
       }
     }
     if (sameThrows >= 4 && !fourOfAKindThrown) {
-      fourOfAKindThrown = true;
       for (let i = 0; i < 5; i++) {
         fourOfAKindScore += diceThrows[i];
       }
-      timesThrownPerTurn = 0;
       lowerTotalScore += fourOfAKindScore;
       totalOverall += fourOfAKindScore;
     }
   }
+  fourOfAKindThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  sameThrows = 0;
+  resetArrays();
 }
 
 function isItATOK() {
@@ -118,19 +121,21 @@ function isItATOK() {
       }
     }
     if (sameThrows >= 3 && !threeOfAKindThrown) {
-      threeOfAKindThrown = true;
       for (let i = 0; i < 5; i++) {
         threeOfAKindScore += diceThrows[i];
       }
-      timesThrownPerTurn = 0;
       lowerTotalScore += threeOfAKindScore;
       totalOverall += threeOfAKindScore;
     }
   }
+  threeOfAKindThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  sameThrows = 0;
+  resetArrays();
 }
 
 function isItAFH() {
@@ -160,16 +165,21 @@ function isItAFH() {
   }
 
   if (threeOfAKindThrown && twoOfAKindThrown && !fullHouseThrown) {
-    fullHouseThrown = true;
     fullHouseScore += 25;
-    timesThrownPerTurn = 0;
     lowerTotalScore += fullHouseScore;
     totalOverall += fullHouseScore;
+    threeOfAKindThrown = false;
+    twoOfAKindThrown = false;
   }
+  fullHouseThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("FH").innerHTML = JSON.stringify(fullHouseScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  sameThrows = 0;
+  sameThrows2 = 0;
+  resetArrays();
 }
 
 function isItASmallStraight() {
@@ -190,18 +200,19 @@ function isItASmallStraight() {
     }
 
     if (sequenceThrows >= 4 && !smallStraightThrown) {
-      smallStraightThrown = true;
       smallStraightScore += 30;
-      timesThrownPerTurn = 0;
       lowerTotalScore += smallStraightScore;
       totalOverall += smallStraightScore;
     }
   }
+  smallStraightThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("smStraight").innerHTML =
     JSON.stringify(smallStraightScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function isItALargeStraight() {
@@ -222,18 +233,19 @@ function isItALargeStraight() {
     }
 
     if (sequenceThrows == 5 && !largeStraightThrown) {
-      largeStraightThrown = true;
       largeStraightScore += 40;
-      timesThrownPerTurn = 0;
       lowerTotalScore += largeStraightScore;
       totalOverall += largeStraightScore;
     }
   }
+  largeStraightThrown = true;
+  timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("lrgStraight").innerHTML =
     JSON.stringify(largeStraightScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function aces() {
@@ -254,6 +266,7 @@ function aces() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function twos() {
@@ -274,6 +287,7 @@ function twos() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function threes() {
@@ -294,6 +308,7 @@ function threes() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function fours() {
@@ -314,6 +329,7 @@ function fours() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function fives() {
@@ -334,6 +350,7 @@ function fives() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function sixes() {
@@ -354,6 +371,7 @@ function sixes() {
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function bonus() {
@@ -377,6 +395,7 @@ function chance() {
   document.getElementById("chance").innerHTML = JSON.stringify(chanceScore);
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
+  resetArrays();
 }
 
 function upperTotal() {
@@ -394,6 +413,17 @@ function lowerTotal() {
 function totalTotal() {
   document.getElementById("totalTotal").innerHTML =
     JSON.stringify(totalOverall);
+}
+
+function resetArrays() {
+  while (diceThrows.length > 0) {
+    diceThrows.pop();
+  }
+
+  while (diceIHave.length > 0) {
+    diceIHave.pop();
+  }
+  document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
 }
 
 /*function reset() {}

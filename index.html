@@ -1,43 +1,146 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style></style>
+  </head>
   <body>
     <h2>Yahtzee!</h2>
-
-    <p>Times rolled this turn: <span id="timesRolled">0</span></p>
-    <p>Your dice rolls are: <span id="diceRolls">[0,0,0,0,0]</span></p>
-    <button type="button" onclick="throwDice()">Click Me</button>
-    <p>Aces: <span id="aces">0</span></p>
-    <button type="button" onclick="aces()">Click Me</button>
-    <p>Twos: <span id="twos">0</span></p>
-    <button type="button" onclick="twos()">Click Me</button>
-    <p>Threes: <span id="threes">0</span></p>
-    <button type="button" onclick="threes()">Click Me</button>
-    <p>Fours: <span id="fours">0</span></p>
-    <button type="button" onclick="fours()">Click Me</button>
-    <p>Fives: <span id="fives">0</span></p>
-    <button type="button" onclick="fives()">Click Me</button>
-    <p>Sixes: <span id="sixes">0</span></p>
-    <button type="button" onclick="sixes()">Click Me</button>
-    <p>Bonus: <span id="bonus">0</span></p>
-    <p>Upper total: <span id="upperTotal">0</span></p>
-    <br />
-    <p>Three of a kind: <span id="TOK">0</span></p>
-    <button type="button" onclick="isItATOK()">Click Me</button>
-    <p>Four of a kind: <span id="FOK">0</span></p>
-    <button type="button" onclick="isItAFOK()">Click Me</button>
-    <p>Full House: <span id="FH">0</span></p>
-    <button type="button" onclick="isItAFH()">Click Me</button>
-    <p>Small Straight: <span id="smStraight">0</span></p>
-    <button type="button" onclick="isItASmallStraight()">Click Me</button>
-    <p>Large Straight: <span id="lrgStraight">0</span></p>
-    <button type="button" onclick="isItALargeStraight()">Click Me</button>
-    <p>Yahtzee: <span id="yahtzee">0</span></p>
-    <button type="button" onclick="isItAYahtzee()">Click Me</button>
-    <p>Chance: <span id="chance">0</span></p>
-    <button type="button" onclick="chance()">Click Me</button>
-    <p>Lower total: <span id="lowerTotal">0</span></p>
-    <p>Total of both: <span id="totalTotal">0</span></p>
-
+    <div class="grid-container">
+      <span class="gridText1">Times rolled this turn:</span>
+      <span class="spanText1" id="timesRolled">0</span>
+      <span class="gridText2">Your dice rolls are:</span>
+      <span class="spanText2" id="diceRolls">[]</span>
+      <button class="button1" type="button" onclick="throwDice()">
+        Roll the dice!
+      </button>
+      <span class="gridText3">Aces:</span>
+      <span class="spanText3" id="aces">0</span>
+      <button
+        class="button2"
+        type="button"
+        onclick="aces();style.visibility = 'hidden';"
+      >
+        Add aces
+      </button>
+      <span class="gridText4">Twos:</span>
+      <span class="spanText4" id="twos">0</span>
+      <button
+        class="button3"
+        type="button"
+        onclick="twos();style.visibility = 'hidden';"
+      >
+        Add twos
+      </button>
+      <span class="gridText5">Threes:</span>
+      <span class="spanText5" id="threes">0</span>
+      <button
+        class="button4"
+        type="button"
+        onclick="threes();style.visibility = 'hidden';"
+      >
+        Add threes
+      </button>
+      <span class="gridText6">Fours:</span>
+      <span class="spanText6" id="fours">0</span>
+      <button
+        class="button5"
+        type="button"
+        onclick="fours();style.visibility = 'hidden';"
+      >
+        Add fours
+      </button>
+      <span class="gridText7">Fives:</span>
+      <span class="spanText7" id="fives">0</span>
+      <button
+        class="button6"
+        type="button"
+        onclick="fives();style.visibility = 'hidden';"
+      >
+        Add fives
+      </button>
+      <span class="gridText8">Sixes:</span>
+      <span class="spanText8" id="sixes">0</span>
+      <button
+        class="button7"
+        type="button"
+        onclick="sixes();style.visibility = 'hidden';"
+      >
+        Add sixes
+      </button>
+      <span class="gridText9">Bonus:</span>
+      <span class="spanText9" id="bonus">0</span>
+      <span class="gridText10">Upper total:</span>
+      <span class="spanText10" id="upperTotal">0</span>
+      <br />
+      <span class="gridText11">Three of a kind:</span>
+      <span class="spanText11" id="TOK">0</span>
+      <button
+        class="button8"
+        type="button"
+        onclick="isItATOK();style.visibility = 'hidden';"
+      >
+        Add three of a kind
+      </button>
+      <span class="gridText12">Four of a kind:</span>
+      <span class="spanText12" id="FOK">0</span>
+      <button
+        class="button9"
+        type="button"
+        onclick="isItAFOK();style.visibility = 'hidden';"
+      >
+        Add four of a kind
+      </button>
+      <span class="gridText13">Full House:</span>
+      <span class="spanText13" id="FH">0</span>
+      <button
+        class="button10"
+        type="button"
+        onclick="isItAFH();style.visibility = 'hidden';"
+      >
+        Add full house
+      </button>
+      <span class="gridText14">Small Straight:</span>
+      <span class="spanText14" id="smStraight">0</span>
+      <button
+        class="button11"
+        type="button"
+        onclick="isItASmallStraight();style.visibility = 'hidden';"
+      >
+        Add small straight
+      </button>
+      <span class="gridText15">Large Straight:</span>
+      <span class="spanText15" id="lrgStraight">0</span>
+      <button
+        class="button12"
+        type="button"
+        onclick="isItALargeStraight();style.visibility = 'hidden';"
+      >
+        Add large straight
+      </button>
+      <span class="gridText16">Yahtzee:</span>
+      <span class="spanText16" id="yahtzee">0</span>
+      <button
+        class="button13"
+        type="button"
+        onclick="isItAYahtzee();style.visibility = 'hidden';"
+      >
+        Add yahtzee
+      </button>
+      <span class="gridText17">Chance:</span>
+      <span class="spanText17" id="chance">0</span>
+      <button
+        class="button14"
+        type="button"
+        onclick="chance();style.visibility = 'hidden';"
+      >
+        Add chance
+      </button>
+      <span class="gridText18">Lower total:</span>
+      <span class="spanText18" id="lowerTotal">0</span>
+      <span class="gridText19"> Total of both: </span>
+      <span class="spanText19" id="totalTotal">0</span>
+    </div>
     <script src="logic.js"></script>
   </body>
 </html>

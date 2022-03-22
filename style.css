@@ -2,25 +2,27 @@ h2 {
   text-align: center;
 }
 
-.grid-container {
-  max-width: 1200px;
-  display: grid;
-  margin: 0 auto;
-  grid-template-columns: repeat(7, [col-start] 1fr [col-end]);
-  grid-template-rows: repeat(10, [row-start] 50px [row-end]);
-  grid-template-areas:
-    "grT1 spT1 . . . . ."
-    "grT2 spT2 but1 . gT11 sT11 but8"
-    "grT3 spT3 but2 . gT12 sT12 but9"
-    "grT4 spT4 but3 . gT13 sT13 bt10"
-    "grT5 spT5 but4 . gT14 sT14 bt11"
-    "grT6 spT6 but5 . gT15 sT15 bt12"
-    "grT7 spT7 but6 . gT16 sT16 bt13"
-    "grT8 spT8 but7 . gT17 sT17 bt14"
-    "grT9 spT9 . . gT18 sT18 ."
-    "gT10 sT10 . . gT19 sT19 .";
-  grid-auto-rows: 1fr;
-  grid-column-gap: 10px;
+@media only screen and (min-width: 901px) {
+  .grid-container {
+    max-width: 1200px;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(7, [col-start] 1fr [col-end]);
+    grid-template-rows: repeat(10, [row-start] 50px [row-end]);
+    grid-template-areas:
+      "grT1 spT1 . . . . ."
+      "grT2 spT2 but1 . gT11 sT11 but8"
+      "grT3 spT3 but2 . gT12 sT12 but9"
+      "grT4 spT4 but3 . gT13 sT13 bt10"
+      "grT5 spT5 but4 . gT14 sT14 bt11"
+      "grT6 spT6 but5 . gT15 sT15 bt12"
+      "grT7 spT7 but6 . gT16 sT16 bt13"
+      "grT8 spT8 but7 . gT17 sT17 bt14"
+      "grT9 spT9 . . gT18 sT18 ."
+      "gT10 sT10 . . gT19 sT19 .";
+    grid-auto-rows: 1fr;
+    grid-column-gap: 10px;
+  }
 }
 
 @media only screen and (max-width: 900px) {

@@ -426,7 +426,94 @@ function resetArrays() {
   document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
 }
 
-/*function reset() {}
+function resetGame() {
+  resetArrays();
+  timesThrownPerTurn = 0;
+
+  sameThrows = 0;
+  sameThrows2 = 0;
+  sequenceThrows = 0;
+
+  acesThrown = 0;
+  twosThrown = 0;
+  threesThrown = 0;
+  foursThrown = 0;
+  fivesThrown = 0;
+  sixesThrown = 0;
+
+  acesScore = 0;
+  twosScore = 0;
+  threesScore = 0;
+  foursScore = 0;
+  fivesScore = 0;
+  sixesScore = 0;
+  upperTotalScore = 0;
+  bonusScore = 0;
+
+  threeOfAKindScore = fourOfAKindScore = 0;
+  fullHouseScore = 0;
+  smallStraightScore = 0;
+  largeStraightScore = 0;
+  yahtzeeScore = 0;
+  chanceScore = 0;
+  lowerTotalScore = 0;
+
+  totalOverall = 0;
+
+  acesCounted = false;
+  twosCounted = false;
+  threesCounted = false;
+  foursCounted = false;
+  fivesCounted = false;
+  sixesCounted = false;
+
+  yahtzeeThrown = false;
+  twoOfAKindThrown = false;
+  threeOfAKindThrown = false;
+  fourOfAKindThrown = false;
+  fullHouseThrown = false;
+  smallStraightThrown = false;
+  largeStraightThrown = false;
+  chanceThrown = false;
+
+  document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
+  document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
+  document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
+  document.getElementById("smStraight").innerHTML =
+    JSON.stringify(smallStraightScore);
+  document.getElementById("smStraight").innerHTML =
+    JSON.stringify(smallStraightScore);
+  document.getElementById("lrgStraight").innerHTML =
+    JSON.stringify(largeStraightScore);
+  document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
+  document.getElementById("twos").innerHTML = JSON.stringify(twosScore);
+  document.getElementById("threes").innerHTML = JSON.stringify(threesScore);
+  document.getElementById("fours").innerHTML = JSON.stringify(foursScore);
+  document.getElementById("fives").innerHTML = JSON.stringify(fivesScore);
+  document.getElementById("sixes").innerHTML = JSON.stringify(sixesScore);
+  document.getElementById("bonus").innerHTML = JSON.stringify(bonusScore);
+  document.getElementById("chance").innerHTML = JSON.stringify(chanceScore);
+  document.getElementById("timesRolled").innerHTML =
+    JSON.stringify(timesThrownPerTurn);
+
+  document.getElementById("btn2").style = "visiblilty: visible;";
+  document.getElementById("btn3").style = "visiblilty: visible;";
+  document.getElementById("btn4").style = "visiblilty: visible;";
+  document.getElementById("btn5").style = "visiblilty: visible;";
+  document.getElementById("btn6").style = "visiblilty: visible;";
+  document.getElementById("btn7").style = "visiblilty: visible;";
+  document.getElementById("btn8").style = "visiblilty: visible;";
+  document.getElementById("btn9").style = "visiblilty: visible;";
+  document.getElementById("bt10").style = "visiblilty: visible;";
+  document.getElementById("bt11").style = "visiblilty: visible;";
+  document.getElementById("bt12").style = "visiblilty: visible;";
+  document.getElementById("bt13").style = "visiblilty: visible;";
+  document.getElementById("bt14").style = "visiblilty: visible;";
+  upperTotal();
+  lowerTotal();
+}
+
+/*
 console.log(yahtzeeThrown);
 console.log(fourOfAKindThrown);
 console.log(threeOfAKindThrown);

@@ -9,9 +9,12 @@
     <div class="grid-container">
       <span class="gridText1">Times rolled this turn:</span>
       <span class="spanText1" id="timesRolled">0</span>
+      <button class="buttonR" type="button" onclick="resetGame()" id="btnR">
+        Reset the game
+      </button>
       <span class="gridText2">Your dice rolls are:</span>
       <span class="spanText2" id="diceRolls">[]</span>
-      <button class="button1" type="button" onclick="throwDice()">
+      <button class="button1" type="button" onclick="throwDice()" id="btn1">
         Roll the dice!
       </button>
       <span class="gridText3">Aces:</span>
@@ -20,6 +23,7 @@
         class="button2"
         type="button"
         onclick="aces();style.visibility = 'hidden';"
+        id="btn2"
       >
         Add aces
       </button>
@@ -29,6 +33,7 @@
         class="button3"
         type="button"
         onclick="twos();style.visibility = 'hidden';"
+        id="btn3"
       >
         Add twos
       </button>
@@ -38,6 +43,7 @@
         class="button4"
         type="button"
         onclick="threes();style.visibility = 'hidden';"
+        id="btn4"
       >
         Add threes
       </button>
@@ -47,6 +53,7 @@
         class="button5"
         type="button"
         onclick="fours();style.visibility = 'hidden';"
+        id="btn5"
       >
         Add fours
       </button>
@@ -56,6 +63,7 @@
         class="button6"
         type="button"
         onclick="fives();style.visibility = 'hidden';"
+        id="btn6"
       >
         Add fives
       </button>
@@ -65,6 +73,7 @@
         class="button7"
         type="button"
         onclick="sixes();style.visibility = 'hidden';"
+        id="btn7"
       >
         Add sixes
       </button>
@@ -79,6 +88,7 @@
         class="button8"
         type="button"
         onclick="isItATOK();style.visibility = 'hidden';"
+        id="btn8"
       >
         Add three of a kind
       </button>
@@ -88,6 +98,7 @@
         class="button9"
         type="button"
         onclick="isItAFOK();style.visibility = 'hidden';"
+        id="btn9"
       >
         Add four of a kind
       </button>
@@ -97,6 +108,7 @@
         class="button10"
         type="button"
         onclick="isItAFH();style.visibility = 'hidden';"
+        id="bt10"
       >
         Add full house
       </button>
@@ -106,6 +118,7 @@
         class="button11"
         type="button"
         onclick="isItASmallStraight();style.visibility = 'hidden';"
+        id="bt11"
       >
         Add small straight
       </button>
@@ -115,6 +128,7 @@
         class="button12"
         type="button"
         onclick="isItALargeStraight();style.visibility = 'hidden';"
+        id="bt12"
       >
         Add large straight
       </button>
@@ -124,6 +138,7 @@
         class="button13"
         type="button"
         onclick="isItAYahtzee();style.visibility = 'hidden';"
+        id="bt13"
       >
         Add yahtzee
       </button>
@@ -133,6 +148,7 @@
         class="button14"
         type="button"
         onclick="chance();style.visibility = 'hidden';"
+        id="bt14"
       >
         Add chance
       </button>

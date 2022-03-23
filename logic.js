@@ -1,6 +1,9 @@
 const diceThrows = [];
 const diceIHave = [];
 
+const heldDice = [0, 0, 0, 0, 0];
+const isDiceHeld = [0, 0, 0, 0, 0];
+
 let timesThrownPerTurn = 0;
 
 let sameThrows = 0;
@@ -41,7 +44,7 @@ let foursCounted = false;
 let fivesCounted = false;
 let sixesCounted = false;
 
-let yahtzeeThrown = false;
+let firstYahtzeeThrown = false;
 let twoOfAKindThrown = false;
 let threeOfAKindThrown = false;
 let fourOfAKindThrown = false;
@@ -54,6 +57,9 @@ function throwDice() {
   if (timesThrownPerTurn < 3) {
     for (let i = 0; i < 5; i++) {
       diceThrows[i] = Math.floor(Math.random() * 6) + 1;
+      if (heldDice[i] > 0) {
+        diceThrows[i] = heldDice[i];
+      }
     }
     timesThrownPerTurn++;
   }
@@ -63,7 +69,6 @@ function throwDice() {
 }
 
 function isItAYahtzee() {
-  yahtzeeThrown = false;
   for (let j = 1; j <= 6; j++) {
     sameThrows = 0;
     for (let i = 0; i < 5; i++) {
@@ -71,13 +76,17 @@ function isItAYahtzee() {
         sameThrows++;
       }
     }
-    if (sameThrows == 5 && !yahtzeeThrown) {
+    if (sameThrows == 5 && !firstYahtzeeThrown) {
       yahtzeeScore += 50;
+      lowerTotalScore += yahtzeeScore;
+      totalOverall += yahtzeeScore;
+    } else if (sameThrows == 5 && firstYahtzeeThrown && yahtzeeScore > 0) {
+      yahtzeeScore += 100;
       lowerTotalScore += yahtzeeScore;
       totalOverall += yahtzeeScore;
     }
   }
-  yahtzeeThrown = true;
+  firstYahtzeeThrown = true;
   timesThrownPerTurn = 0;
   lowerTotal();
   document.getElementById("yahtzee").innerHTML = JSON.stringify(yahtzeeScore);
@@ -262,7 +271,6 @@ function aces() {
   }
   document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
   acesCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -283,7 +291,6 @@ function twos() {
   }
   document.getElementById("twos").innerHTML = JSON.stringify(twosScore);
   twosCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -304,7 +311,6 @@ function threes() {
   }
   document.getElementById("threes").innerHTML = JSON.stringify(threesScore);
   threesCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -325,7 +331,6 @@ function fours() {
   }
   document.getElementById("fours").innerHTML = JSON.stringify(foursScore);
   foursCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -346,7 +351,6 @@ function fives() {
   }
   document.getElementById("fives").innerHTML = JSON.stringify(fivesScore);
   fivesCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -367,7 +371,6 @@ function sixes() {
   }
   document.getElementById("sixes").innerHTML = JSON.stringify(sixesScore);
   sixesCounted = true;
-  bonus();
   upperTotal();
   document.getElementById("timesRolled").innerHTML =
     JSON.stringify(timesThrownPerTurn);
@@ -375,9 +378,10 @@ function sixes() {
 }
 
 function bonus() {
-  if (upperTotal >= 63) {
+  if (upperTotalScore >= 63) {
     bonusScore = 35;
   }
+  totalOverall += bonusScore;
   document.getElementById("bonus").innerHTML = JSON.stringify(bonusScore);
 }
 
@@ -401,6 +405,7 @@ function chance() {
 function upperTotal() {
   document.getElementById("upperTotal").innerHTML =
     JSON.stringify(upperTotalScore);
+  bonus();
   totalTotal();
 }
 
@@ -422,6 +427,11 @@ function resetArrays() {
 
   while (diceIHave.length > 0) {
     diceIHave.pop();
+  }
+
+  for (let i = 0; i < 5; i++) {
+    heldDice[i] = 0;
+    isDiceHeld[i] = 0;
   }
   document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
 }
@@ -513,6 +523,19 @@ function resetGame() {
   lowerTotal();
 }
 
+function holdDice(diceNum) {
+  if (isDiceHeld[diceNum] == 0) {
+    heldDice[diceNum] = diceThrows[diceNum];
+    isDiceHeld[diceNum] = 1;
+  } else if (isDiceHeld[diceNum] == 1) {
+    heldDice[diceNum] = 0;
+    isDiceHeld[diceNum] = 0;
+  }
+
+  console.log(heldDice, isDiceHeld);
+}
+
+//Geen echte code, ik hou ze hier om me te herinneren aan hoe dit programma begon
 /*
 console.log(yahtzeeThrown);
 console.log(fourOfAKindThrown);
@@ -528,3 +551,26 @@ console.log(foursScore);
 console.log(fivesScore);
 console.log(sixesScore); 
 */
+
+//Een probeerdingetje om de aces, twos, threes, fours, fives en sixes functie in 1 te gooien
+/*function simpleNums(nums) {
+  switch (nums) {
+    case 1:
+      for (let i = 0; i < 5; i++) {
+        if (diceThrows[i] == 1) {
+          acesThrown++;
+        }
+      }
+      if (!acesCounted) {
+        acesScore = acesThrown * 1;
+        upperTotalScore += acesScore;
+        timesThrownPerTurn = 0;
+        totalOverall += acesScore;
+      }
+      document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
+      acesCounted = true;
+      bonus();
+      upperTotal();
+      break;
+  }
+}*/

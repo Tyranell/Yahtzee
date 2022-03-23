@@ -7,6 +7,21 @@
   <body>
     <h2>Yahtzee!</h2>
     <div class="grid-container">
+      <button class="buttonH1" type="button" onclick="holdDice(0)" id="btH1">
+        Hold 1st die
+      </button>
+      <button class="buttonH2" type="button" onclick="holdDice(1)" id="btH2">
+        Hold 2th die
+      </button>
+      <button class="buttonH3" type="button" onclick="holdDice(2)" id="btH3">
+        Hold 3rd die
+      </button>
+      <button class="buttonH4" type="button" onclick="holdDice(3)" id="btH4">
+        Hold 4th die
+      </button>
+      <button class="buttonH5" type="button" onclick="holdDice(4)" id="btH5">
+        Hold 5th die
+      </button>
       <span class="gridText1">Times rolled this turn:</span>
       <span class="spanText1" id="timesRolled">0</span>
       <button class="buttonR" type="button" onclick="resetGame()" id="btnR">
@@ -134,12 +149,7 @@
       </button>
       <span class="gridText16">Yahtzee:</span>
       <span class="spanText16" id="yahtzee">0</span>
-      <button
-        class="button13"
-        type="button"
-        onclick="isItAYahtzee();style.visibility = 'hidden';"
-        id="bt13"
-      >
+      <button class="button13" type="button" onclick="isItAYahtzee()" id="bt13">
         Add yahtzee
       </button>
       <span class="gridText17">Chance:</span>

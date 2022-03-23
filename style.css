@@ -8,10 +8,11 @@ h2 {
     display: grid;
     margin: 0 auto;
     grid-template-columns: repeat(7, [col-start] 1fr [col-end]);
-    grid-template-rows: repeat(10, [row-start] 50px [row-end]);
+    grid-template-rows: repeat(11, [row-start] 50px [row-end]);
     grid-template-areas:
-      "grT1 spT1 . . . . ."
-      "grT2 spT2 but1 . gT11 sT11 but8"
+      "grT2 spT2 but1  . butR . ."
+      ". btH1 btH2 btH3 btH4 btH5 ."
+      "grT1 spT1 . . gT11 sT11 but8"
       "grT3 spT3 but2 . gT12 sT12 but9"
       "grT4 spT4 but3 . gT13 sT13 bt10"
       "grT5 spT5 but4 . gT14 sT14 bt11"
@@ -43,7 +44,7 @@ h2 {
       "grT8 spT8 but7"
       "grT9 spT9 ."
       "gT10 sT10 ."
-      ". . ."
+      "butR . ."
       "gT11 sT11 but8"
       "gT12 sT12 but9"
       "gT13 sT13 bt10"
@@ -179,6 +180,24 @@ h2 {
   grid-area: sT19;
 }
 
+.buttonR {
+  grid-area: butR;
+}
+.buttonH1 {
+  grid-area: btH1;
+}
+.buttonH2 {
+  grid-area: btH2;
+}
+.buttonH3 {
+  grid-area: btH3;
+}
+.buttonH4 {
+  grid-area: btH4;
+}
+.buttonH5 {
+  grid-area: btH5;
+}
 .button1 {
   grid-area: but1;
 }

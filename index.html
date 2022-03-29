@@ -28,7 +28,11 @@
         Reset the game
       </button>
       <span class="gridText2">Your dice rolls are:</span>
-      <span class="spanText2" id="diceRolls">[]</span>
+      <span class="diceText1" id="diceRoll1">0</span>
+      <span class="diceText2" id="diceRoll2">0</span>
+      <span class="diceText3" id="diceRoll3">0</span>
+      <span class="diceText4" id="diceRoll4">0</span>
+      <span class="diceText5" id="diceRoll5">0</span>
       <button class="button1" type="button" onclick="throwDice()" id="btn1">
         Roll the dice!
       </button>
@@ -37,7 +41,7 @@
       <button
         class="button2"
         type="button"
-        onclick="aces();style.visibility = 'hidden';"
+        onclick="simpleNums(1);style.visibility = 'hidden';"
         id="btn2"
       >
         Add aces
@@ -47,7 +51,7 @@
       <button
         class="button3"
         type="button"
-        onclick="twos();style.visibility = 'hidden';"
+        onclick="simpleNums(2);style.visibility = 'hidden';"
         id="btn3"
       >
         Add twos
@@ -57,7 +61,7 @@
       <button
         class="button4"
         type="button"
-        onclick="threes();style.visibility = 'hidden';"
+        onclick="simpleNums(3);style.visibility = 'hidden';"
         id="btn4"
       >
         Add threes
@@ -67,7 +71,7 @@
       <button
         class="button5"
         type="button"
-        onclick="fours();style.visibility = 'hidden';"
+        onclick="simpleNums(4);style.visibility = 'hidden';"
         id="btn5"
       >
         Add fours
@@ -77,7 +81,7 @@
       <button
         class="button6"
         type="button"
-        onclick="fives();style.visibility = 'hidden';"
+        onclick="simpleNums(5);style.visibility = 'hidden';"
         id="btn6"
       >
         Add fives
@@ -87,7 +91,7 @@
       <button
         class="button7"
         type="button"
-        onclick="sixes();style.visibility = 'hidden';"
+        onclick="simpleNums(6);style.visibility = 'hidden';"
         id="btn7"
       >
         Add sixes

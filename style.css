@@ -10,8 +10,8 @@ h2 {
     grid-template-columns: repeat(7, [col-start] 1fr [col-end]);
     grid-template-rows: repeat(11, [row-start] 50px [row-end]);
     grid-template-areas:
-      "grT2 spT2 but1  . butR . ."
-      ". btH1 btH2 btH3 btH4 btH5 ."
+      "grT2 diT1 diT2 diT3 diT4 diT5 but1"
+      "butR btH1 btH2 btH3 btH4 btH5 ."
       "grT1 spT1 . . gT11 sT11 but8"
       "grT3 spT3 but2 . gT12 sT12 but9"
       "grT4 spT4 but3 . gT13 sT13 bt10"
@@ -239,4 +239,8 @@ h2 {
 }
 .button14 {
   grid-area: bt14;
+}
+
+.buttonH1::after {
+  content: "Die 1 held";
 }

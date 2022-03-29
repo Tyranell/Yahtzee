@@ -32,10 +32,15 @@ h2 {
     display: grid;
     margin: 0 auto;
     grid-template-columns: repeat(3, [col-start] 1fr [col-end]);
-    grid-template-rows: repeat(20, [row-start] 50px [row-end]);
+    grid-template-rows: repeat(25, [row-start] 50px [row-end]);
     grid-template-areas:
-      "grT1 spT1 ."
-      "grT2 spT2 but1"
+      "grT1 spT1 butR"
+      "grT2 diT1 btH1"
+      "but1 diT2 btH2"
+      ". diT3 btH3"
+      ". diT4 btH4"
+      ". diT5 btH5"
+      ". . ."
       "grT3 spT3 but2"
       "grT4 spT4 but3"
       "grT5 spT5 but4"
@@ -44,7 +49,7 @@ h2 {
       "grT8 spT8 but7"
       "grT9 spT9 ."
       "gT10 sT10 ."
-      "butR . ."
+      ". . ."
       "gT11 sT11 but8"
       "gT12 sT12 but9"
       "gT13 sT13 bt10"
@@ -64,6 +69,21 @@ h2 {
   border: 3px solid black;
 }
 
+.diceText1 {
+  grid-area: diT1;
+}
+.diceText2 {
+  grid-area: diT2;
+}
+.diceText3 {
+  grid-area: diT3;
+}
+.diceText4 {
+  grid-area: diT4;
+}
+.diceText5 {
+  grid-area: diT5;
+}
 .gridText1 {
   grid-area: grT1;
 }
@@ -239,8 +259,4 @@ h2 {
 }
 .button14 {
   grid-area: bt14;
-}
-
-.buttonH1::after {
-  content: "Die 1 held";
 }

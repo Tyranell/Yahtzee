@@ -386,7 +386,6 @@ function resetGame() {
 
   numbersSame = 0;
 
-  document.getElementById("diceRolls").innerHTML = JSON.stringify(diceThrows);
   document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
   document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
   document.getElementById("smStraight").innerHTML =
@@ -395,12 +394,6 @@ function resetGame() {
     JSON.stringify(smallStraightScore);
   document.getElementById("lrgStraight").innerHTML =
     JSON.stringify(largeStraightScore);
-  document.getElementById("aces").innerHTML = JSON.stringify(acesScore);
-  document.getElementById("twos").innerHTML = JSON.stringify(twosScore);
-  document.getElementById("threes").innerHTML = JSON.stringify(threesScore);
-  document.getElementById("fours").innerHTML = JSON.stringify(foursScore);
-  document.getElementById("fives").innerHTML = JSON.stringify(fivesScore);
-  document.getElementById("sixes").innerHTML = JSON.stringify(sixesScore);
   document.getElementById("bonus").innerHTML = JSON.stringify(bonusScore);
   document.getElementById("chance").innerHTML = JSON.stringify(chanceScore);
   document.getElementById("timesRolled").innerHTML =

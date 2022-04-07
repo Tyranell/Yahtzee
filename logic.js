@@ -349,6 +349,24 @@ function resetArrays() {
   document.getElementById("diceRoll5").innerHTML = JSON.stringify(
     diceThrows[4]
   );
+  document.getElementById("aces").innerHTML = JSON.stringify(
+    scoreSimpleNums[0]
+  );
+  document.getElementById("twos").innerHTML = JSON.stringify(
+    scoreSimpleNums[1]
+  );
+  document.getElementById("threes").innerHTML = JSON.stringify(
+    scoreSimpleNums[2]
+  );
+  document.getElementById("fours").innerHTML = JSON.stringify(
+    scoreSimpleNums[3]
+  );
+  document.getElementById("fives").innerHTML = JSON.stringify(
+    scoreSimpleNums[4]
+  );
+  document.getElementById("sixes").innerHTML = JSON.stringify(
+    scoreSimpleNums[5]
+  );
 }
 
 function resetGame() {
@@ -364,7 +382,8 @@ function resetGame() {
   upperTotalScore = 0;
   bonusScore = 0;
 
-  threeOfAKindScore = fourOfAKindScore = 0;
+  threeOfAKindScore = 0;
+  fourOfAKindScore = 0;
   fullHouseScore = 0;
   smallStraightScore = 0;
   largeStraightScore = 0;
@@ -388,6 +407,7 @@ function resetGame() {
 
   document.getElementById("FOK").innerHTML = JSON.stringify(fourOfAKindScore);
   document.getElementById("TOK").innerHTML = JSON.stringify(threeOfAKindScore);
+  document.getElementById("TOK").innerHTML = JSON.stringify(fullHouseScore);
   document.getElementById("smStraight").innerHTML =
     JSON.stringify(smallStraightScore);
   document.getElementById("smStraight").innerHTML =

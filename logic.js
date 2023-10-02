@@ -209,16 +209,19 @@ function isItASmallStraight() {
   for (let i = 0; i < 6; i++) {
     if (diceIHave[i] == 1) {
       sequenceThrows++;
+      if (sequenceThrows >= 4 && !smallStraightThrown) {
+        smallStraightScore += 30;
+        lowerTotalScore += smallStraightScore;
+        totalOverall += smallStraightScore;
+      }
     } else {
       sequenceThrows = 0;
     }
-
-    if (sequenceThrows >= 4 && !smallStraightThrown) {
-      smallStraightScore += 30;
-      lowerTotalScore += smallStraightScore;
-      totalOverall += smallStraightScore;
-    }
   }
+
+  console.log(diceIHave);
+  console.log(sequenceThrows);
+
   smallStraightThrown = true;
   timesThrownPerTurn = 0;
   lowerTotal();
@@ -242,16 +245,16 @@ function isItALargeStraight() {
   for (let i = 0; i < 6; i++) {
     if (diceIHave[i] == 1) {
       sequenceThrows++;
+      if (sequenceThrows == 5 && !largeStraightThrown) {
+        largeStraightScore += 40;
+        lowerTotalScore += largeStraightScore;
+        totalOverall += largeStraightScore;
+      }
     } else {
       sequenceThrows = 0;
     }
-
-    if (sequenceThrows == 5 && !largeStraightThrown) {
-      largeStraightScore += 40;
-      lowerTotalScore += largeStraightScore;
-      totalOverall += largeStraightScore;
-    }
   }
+
   largeStraightThrown = true;
   timesThrownPerTurn = 0;
   lowerTotal();
